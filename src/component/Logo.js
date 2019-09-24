@@ -1,12 +1,13 @@
 import React from 'react'
 import logo from '../logo.png';
 import './Logo.css';
+import Tilt from 'react-tilt';
 
 function Logo() {
     return (
-        <div className='card'>
+        <Tilt className='card'  options={{ max : 100 }}>
             <img className='card-image' alt='logo' src={logo}/>
-        </div>
+        </Tilt>
     )
 }
 
