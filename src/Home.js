@@ -5,7 +5,7 @@ import Logo from './component/Logo'
 export default function Home(props) {
     const { isSignIn } = props;
     return (
-        <div>
+        <div className='Home'>
             <Navbar/>
             <Logo isSignIn={isSignIn}/>
         </div>

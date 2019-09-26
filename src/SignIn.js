@@ -4,7 +4,7 @@ import SignInForm from './component/SignInForm'
 
 export default function SignIn(props) {
     return (
-        <div>
+        <div className='SignIn'>
             <Navbar/>
             <SignInForm/>
         </div>
