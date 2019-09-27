@@ -6,8 +6,8 @@ export default function Home(props) {
     const { isSignIn, signOut } = props;
     return (
         <div className='Home'>
-            <Navbar signOut={signOut}/>
-            <Logo isSignIn={isSignIn}/>
+            <Navbar isSignIn={isSignIn} signOut={signOut}/>
+            <Logo />
         </div>
     )
 }

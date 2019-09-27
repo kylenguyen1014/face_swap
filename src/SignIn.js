@@ -1,9 +1,15 @@
 import React from 'react'
 import './SignIn.css';
 import Navbar from './component/Navbar';
+import { Link } from "react-router-dom";
 
 export default function SignIn(props) {
     const {isSignIn, signIn} = props;
+
+    const handleSignIn = () => {
+        signIn();
+        props.history.push('/');
+    }
     return (
         <div className='SignIn d-flex flex-column'>
             <Navbar isSignIn={isSignIn}/>
@@ -20,8 +26,8 @@ export default function SignIn(props) {
                         <input type="password" className="form-control bg-transparent" id="exampleInputPassword1" placeholder="Password"/>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <button className="btn btn-primary" onClick={signIn}>Sign In</button>
-                        <p>Register?</p>
+                        <button className="btn btn-primary" onClick={handleSignIn}>Sign In</button>
+                        <Link to='/register'>Register?</Link>
                     </div>
                 </div>
             </div>
