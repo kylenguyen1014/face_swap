@@ -19,9 +19,9 @@ function App() {
   }
   return (
     <Switch className="App">
-      <Route exact path='/register' render={(routeProps) => <Register isSignIn={isSignIn}/> }/>
-      <Route exact path='/signin' render={(routeProps) => <SignIn isSignIn={isSignIn}/> }/>
-      <Route exact path='/' render={(routeProps) => <Home isSignIn={isSignIn}/> }/>
+      <Route exact path='/register' render={(routeProps) => <Register isSignIn={isSignIn} signIn={signIn}/> }/>
+      <Route exact path='/signin' render={(routeProps) => <SignIn isSignIn={isSignIn} signIn={signIn}/> }/>
+      <Route exact path='/' render={(routeProps) => <Home isSignIn={isSignIn} signOut={signOut}/> }/>
     </Switch>
   );
 }

@@ -5,7 +5,7 @@ import Tilt from 'react-tilt';
 
 function Logo() {
     return (
-        <Tilt className='card'  options={{ max : 100 }}>
+        <Tilt className='card mt-2'  options={{ max : 100 }}>
             <img className='card-image' alt='logo' src={logo}/>
         </Tilt>
     )
