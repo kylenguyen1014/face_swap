@@ -17,6 +17,7 @@ function App() {
   const signOut = () => {
     setIsSignIn(false);
   }
+  
   return (
     <Switch className="App">
       <Route exact path='/register' render={(routeProps) => <Register isSignIn={isSignIn} signIn={signIn} {...routeProps} /> }/>
