@@ -13,11 +13,11 @@ function Images() {
     const templateImageChange = (e) => {
         let templateInput = e.target;
         const reader = new FileReader();
-        console.log(reader);
+        // console.log(reader);
         reader.onload = function(){
             const dataURL = reader.result;
             setTemplate(dataURL);
-            console.log(dataURL);
+            // console.log(dataURL);
           };
           if (templateInput.files[0]){
             reader.readAsDataURL(templateInput.files[0]);
@@ -31,7 +31,7 @@ function Images() {
         reader.onload = function(){
             const dataURL = reader.result;
             setMerging(dataURL);
-            console.log(dataURL);
+            // console.log(dataURL);
           };
           if (templateInput.files[0]){
             reader.readAsDataURL(templateInput.files[0]);
@@ -61,40 +61,42 @@ function Images() {
         .then(data => console.log(data))
     }
     return (
-        <div className='Images mx-auto '>
-            <div className="card" style={{width: '20rem', height : '25rem'}}>
-                <h5 className="card-title">Template Image</h5>
-                <div className='m-auto pt-3' style={{width: '12rem', height : '15rem'}}>
-                    {(template) && <img src={template} className="card-img-top "  alt="template pic"/>}
-                </div>
-                <div className="card-body d-flex flex-column justify-content-end">
-                    <div className="custom-file">
-                        <input type="file" className="input-group-text w-100 bg-transparent border border-dark "   id="customFile1" accept="image/jpeg" onChange={templateImageChange}/>
-                    </div>
-                </div>
-            </div>
-            <div className="card" style={{width: '20rem', height : '25rem'}}>
-                <h5 className="card-title">Merging Image</h5>
-                <div className='m-auto pt-3' style={{width: '12rem', height : '15rem'}}>
-                    {(merging) && <img src={merging} className="card-img-top "  alt="template pic"/>}
-                </div>
-                <div className="card-body d-flex flex-column justify-content-end">
-                    <div className="custom-file">
-                        <input type="file" className="input-group-text w-100 bg-transparent border border-dark "   id="customFile1" accept="image/jpeg" onChange={mergingImageChange}/>
-                    </div>
-                </div>
-            </div>
-            <div className="card" style={{width: '20rem', height : '25rem'}}>
-                <h5 className="card-title">Result Image</h5>
-                <div className='m-auto pt-3' style={{width: '12rem', height : '15rem'}}>
-                    {(result) && <img src={result} className="card-img-top "  alt="template pic"/>}
-                </div>
-                <div className="card-body d-flex flex-column justify-content-end">
-                </div>
-            </div>
             
-            <button onClick={submitAPI}>Submit</button>
-        </div>
+            <div className='Images mx-auto mt-5 d-flex align-items-center'>
+                <div className="card" style={{width: '20rem', height : '25rem'}}>
+                    <h5 className="card-title text-center">Template Image</h5>
+                    <div className='m-auto pt-3' style={{width: '60%', height : '15rem'}}>
+                        {(template) && <img src={template} className="card-img-top "  alt="template pic"/>}
+                    </div>
+                    <div className="card-body d-flex flex-column justify-content-end">
+                        <div className="custom-file">
+                            <input type="file" className="input-group-text w-100 bg-transparent border border-dark "   id="customFile1" accept="image/jpeg" onChange={templateImageChange}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="card" style={{width: '20rem', height : '25rem'}}>
+                    <h5 className="card-title text-center">Merging Image</h5>
+                    <div className='m-auto pt-3' style={{width: '12rem', height : '15rem'}}>
+                        {(merging) && <img src={merging} className="card-img-top "  alt="template pic"/>}
+                    </div>
+                    <div className="card-body d-flex flex-column justify-content-end">
+                        <div className="custom-file">
+                            <input type="file" className="input-group-text w-100 bg-transparent border border-dark "   id="customFile1" accept="image/jpeg" onChange={mergingImageChange}/>
+                        </div>
+                    </div>
+                </div>
+                <button className='btn btn-primary btn-lg h-25 align-self-center mx-auto' onClick={submitAPI}>Merge</button>
+                <div className="card " style={{width: '28rem', height : '35rem'}}>
+                    <h5 className="card-title text-center">Result Image</h5>
+                    <div className='m-auto pt-3' style={{width: '60%'}}>
+                        {(result) && <img src={result} className="card-img-top "  alt="template pic"/>}
+                    </div>
+                    {/* <div className="card-body d-flex flex-column justify-content-end">
+                    </div> */}
+                </div>
+                
+                
+            </div>
     )
 }
 

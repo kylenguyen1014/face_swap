@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import './SignIn.css';
 import Navbar from './component/Navbar';
 import { Link } from "react-router-dom";
