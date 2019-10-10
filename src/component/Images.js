@@ -69,18 +69,18 @@ function Images() {
     return (
             <div>
                 <div className="row w-75 mx-auto mt-3 justify-content-between">
-                    <div className="col-5">
+                    <div className="col-md-6 col-sm-10">
                         <input type="url" name='template' className="form-control"  placeholder="Link to 1st face" value={template} onChange={templateImageChange}/>
                     </div>
-                    <div className="col-5">
+                    <div className="col-md-6 col-sm-10">
                         <input type="url"  name='merging' className="form-control"  placeholder="Link to 2nd face" value={merging} onChange={mergingImageChange}/>
                     </div>
-                    <div className="col">
+                    {/* <div className="col">
                         <button className='btn btn-primary'>Merge</button>
-                    </div>
+                    </div> */}
                 </div>
-                <div className='Images mx-auto mt-5 d-flex align-items-center'>
-                    <div className="card" style={{width: '20rem', height : '25rem'}}>
+                <div className='mt-5 d-flex align-items-center '>
+                    <div className="card ml-auto mr-2" style={{width: '20rem', height : '25rem'}}>
                         <h5 className="card-title text-center">Template Image</h5>
                         <div className='m-auto p-3' >
                             {(template) && <img src={template} className="card-img-top "  alt="template pic"/>}
@@ -91,7 +91,7 @@ function Images() {
                             </div>
                         </div> */}
                     </div>
-                    <div className="card" style={{width: '20rem', height : '25rem'}}>
+                    <div className="card mr-auto" style={{width: '20rem', height : '25rem'}}>
                         <h5 className="card-title text-center">Merging Image</h5>
                         <div className='m-auto p-3'>
                             {(merging) && <img src={merging} className="card-img-top "  alt="template pic"/>}
@@ -102,8 +102,8 @@ function Images() {
                             </div>
                         </div> */}
                     </div>
-                    <button className='btn btn-primary btn-lg h-25 align-self-center mx-auto' onClick={submitAPI}>Merge</button>
-                    <div className="card " style={{width: '28rem', height : '32rem'}}>
+                    <button className='btn btn-primary btn-lg h-25 ' onClick={submitAPI}>Merge</button>
+                    <div className="card  mx-auto" style={{width: '28rem', height : '32rem'}}>
                         <h5 className="card-title text-center">Result Image</h5>
                         <div className='m-auto p-3'>
                             {(result) && <img src={result} className="card-img-top "  alt="template pic"/>}

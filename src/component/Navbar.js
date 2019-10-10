@@ -29,7 +29,7 @@ function Navbar(props) {
                 </ul>
             </div>
             <div className="modal fade" id="signout" tabindex="-1" role="dialog" aria-labelledby="signoutModal" aria-hidden="true" >
-                <div className="modal-dialog" role="document">
+                <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLabel">Signing Out?</h5>
@@ -42,7 +42,7 @@ function Navbar(props) {
                     </div> */}
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#signout" onClick={() => signOut()}>Sign out</button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#signout" onClick={() => setTimeout(signOut(),1000)}>Sign out</button>
                     </div>
                     </div>
                 </div>
