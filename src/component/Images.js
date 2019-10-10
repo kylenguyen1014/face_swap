@@ -82,8 +82,8 @@ function Images() {
                 <div className='Images mx-auto mt-5 d-flex align-items-center'>
                     <div className="card" style={{width: '20rem', height : '25rem'}}>
                         <h5 className="card-title text-center">Template Image</h5>
-                        <div className='m-auto ' >
-                            {(template) && <img src={template} className="card-img-top p-3"  alt="template pic"/>}
+                        <div className='m-auto p-3' >
+                            {(template) && <img src={template} className="card-img-top "  alt="template pic"/>}
                         </div>
                         {/* <div className="card-body d-flex flex-column justify-content-end">
                             <div className="custom-file">
@@ -93,8 +93,8 @@ function Images() {
                     </div>
                     <div className="card" style={{width: '20rem', height : '25rem'}}>
                         <h5 className="card-title text-center">Merging Image</h5>
-                        <div className='m-auto'>
-                            {(merging) && <img src={merging} className="card-img-top p-3"  alt="template pic"/>}
+                        <div className='m-auto p-3'>
+                            {(merging) && <img src={merging} className="card-img-top "  alt="template pic"/>}
                         </div>
                         {/* <div className="card-body d-flex flex-column justify-content-end">
                             <div className="custom-file">
@@ -105,8 +105,8 @@ function Images() {
                     <button className='btn btn-primary btn-lg h-25 align-self-center mx-auto' onClick={submitAPI}>Merge</button>
                     <div className="card " style={{width: '28rem', height : '32rem'}}>
                         <h5 className="card-title text-center">Result Image</h5>
-                        <div className='m-auto'>
-                            {(result) && <img src={result} className="card-img-top p-3"  alt="template pic"/>}
+                        <div className='m-auto p-3'>
+                            {(result) && <img src={result} className="card-img-top "  alt="template pic"/>}
                         </div>
                         {/* <div className="card-body d-flex flex-column justify-content-end">
                         </div> */}

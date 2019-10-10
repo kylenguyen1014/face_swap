@@ -13,7 +13,7 @@ function Navbar(props) {
             <div className="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto">
                     {isSignIn ?  
-                        <li className="nav-item" onClick={() => signOut()}>
+                        <li className="nav-item" data-toggle="modal" data-target="#signout" >
                             <Link className="nav-link" to="/">Sign Out</Link>
                         </li>
                     :
@@ -27,6 +27,25 @@ function Navbar(props) {
                         </>
                     }
                 </ul>
+            </div>
+            <div className="modal fade" id="signout" tabindex="-1" role="dialog" aria-labelledby="signoutModal" aria-hidden="true" >
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Signing Out?</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {/* <div className="modal-body">
+                        Are you sure you want to sign out?
+                    </div> */}
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#signout" onClick={() => signOut()}>Sign out</button>
+                    </div>
+                    </div>
+                </div>
             </div>
         </nav>
     )
