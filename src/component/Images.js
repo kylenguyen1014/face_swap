@@ -3,8 +3,8 @@ import './Images.css';
 import axios from 'axios';
 
 function Images() {
-    const [template, setTemplate] = useState();
-    const [merging, setMerging] = useState();
+    const [template, setTemplate] = useState('');
+    const [merging, setMerging] = useState('');
     const [result, setResult] = useState();
     const APIkey = '1ltOS1IXZ1VTu_UyqY3S0HbV_DK3EJwA';
     const APISecret = '2h4nPYp5Hs8qUAsfOM3H8TzQTKuoMZKZ';
@@ -82,31 +82,31 @@ function Images() {
                 <div className='Images mx-auto mt-5 d-flex align-items-center'>
                     <div className="card" style={{width: '20rem', height : '25rem'}}>
                         <h5 className="card-title text-center">Template Image</h5>
-                        <div className='m-auto pt-3' style={{width: '60%', height : '15rem'}}>
-                            {(template) && <img src={template} className="card-img-top "  alt="template pic"/>}
+                        <div className='m-auto ' >
+                            {(template) && <img src={template} className="card-img-top p-3"  alt="template pic"/>}
                         </div>
-                        <div className="card-body d-flex flex-column justify-content-end">
+                        {/* <div className="card-body d-flex flex-column justify-content-end">
                             <div className="custom-file">
                                 <input type="file" className="input-group-text w-100 bg-transparent border border-dark "   id="customFile1" accept="image/jpeg" onChange={templateImageChange}/>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="card" style={{width: '20rem', height : '25rem'}}>
                         <h5 className="card-title text-center">Merging Image</h5>
-                        <div className='m-auto pt-3' style={{width: '12rem', height : '15rem'}}>
-                            {(merging) && <img src={merging} className="card-img-top "  alt="template pic"/>}
+                        <div className='m-auto'>
+                            {(merging) && <img src={merging} className="card-img-top p-3"  alt="template pic"/>}
                         </div>
-                        <div className="card-body d-flex flex-column justify-content-end">
+                        {/* <div className="card-body d-flex flex-column justify-content-end">
                             <div className="custom-file">
                                 <input type="file" className="input-group-text w-100 bg-transparent border border-dark "   id="customFile1" accept="image/jpeg" onChange={mergingImageChange}/>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <button className='btn btn-primary btn-lg h-25 align-self-center mx-auto' onClick={submitAPI}>Merge</button>
-                    <div className="card " style={{width: '28rem', height : 'auto'}}>
+                    <div className="card " style={{width: '28rem', height : '32rem'}}>
                         <h5 className="card-title text-center">Result Image</h5>
-                        <div className='m-auto pt-3' style={{width: '90%'}}>
-                            {(result) && <img src={result} className="card-img-top "  alt="template pic"/>}
+                        <div className='m-auto'>
+                            {(result) && <img src={result} className="card-img-top p-3"  alt="template pic"/>}
                         </div>
                         {/* <div className="card-body d-flex flex-column justify-content-end">
                         </div> */}

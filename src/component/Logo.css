@@ -4,7 +4,7 @@
     background: transparent;
     box-shadow: 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.24);
     margin: 0 2rem;
-
+    overflow: hidden;
 }
 
 .card-image {
