@@ -6,89 +6,50 @@ function Images() {
     const [template, setTemplate] = useState('');
     const [merging, setMerging] = useState('');
     const [result, setResult] = useState();
-    const APIkey = '1ltOS1IXZ1VTu_UyqY3S0HbV_DK3EJwA';
-    const APISecret = '2h4nPYp5Hs8qUAsfOM3H8TzQTKuoMZKZ';
-
 
     const templateImageChange = (e) => {
         setTemplate(e.target.value);
-        // let templateInput = e.target;
-        // const reader = new FileReader();
-        // console.log(reader);
-        // reader.onload = function(){
-        //     const dataURL = reader.result;
-        //     setTemplate(dataURL);
-        //     // console.log(dataURL);
-        //   };
-        //   if (templateInput.files[0]){
-        //     reader.readAsDataURL(templateInput.files[0]);
-        //   }
     }
 
     const mergingImageChange = (e) => {
         setMerging(e.target.value);
-        // let templateInput = e.target;
-        // const reader = new FileReader();
-
-        // reader.onload = function(){
-        //     const dataURL = reader.result;
-        //     setMerging(dataURL);
-        //     // console.log(dataURL);
-        //   };
-        //   if (templateInput.files[0]){
-        //     reader.readAsDataURL(templateInput.files[0]);
-        //   }    
     }
 
     const submitAPI = () => {
-        // axios.post('https://api-us.faceplusplus.com/facepp/v3/detect', {
+
+        fetch('http://localhost:8000/imageurl',{
+            method : 'post',
+            headers: {'Content-type': 'application/json'},
+            body : JSON.stringify({
+                template: template,
+                merging: merging
+            })
+        })
+        .then(response => response.json())
+        .then(data => setResult('data:image/jpeg;base64,' + data.result))
+
+        // const params = {
         //     api_key: APIkey,
         //     api_secret: APISecret,
-        //     image_base64: template, 
-        // })
-        // .then((response) => {
-        //     console.log(response);
-        // }, (error) => {
-        //     console.log(error);
-        // })
-        // const pic1 = template.replace("data:image/jpeg;base64,", "");
-        // const pic2 = merging.replace("data:image/jpeg;base64,", "");
-        // console.log(template);
-
-        // fetch('http://localhost:8000/image',{
+        //     // template_base64: template,
+        //     template_url:template,
+        //     // template_rectangle: template_rectangle,
+        //     // merge_base64 : merging
+        //     merge_url : merging
+        // };
+        // axios({
         //     method : 'post',
-        //     headers: {'Content-type': 'application/json'},
-        //     body : JSON.stringify({
-        //         template: template,
-        //         merging: merging
-        //     })
+        //     url :'https://us.faceplusplus.com/imagepp/v1/mergeface',
+        //     // headers: {'Content-type': 'application/json'},
+        //     params : params
         // })
-        // .then(response => response.json())
-        // .then(data => setResult('data:image/jpeg;base64,' + data.result))
-        // .then(data => setResult(data))
-
-        const params = {
-            api_key: APIkey,
-            api_secret: APISecret,
-            // template_base64: template,
-            template_url:template,
-            // template_rectangle: template_rectangle,
-            // merge_base64 : merging
-            merge_url : merging
-        };
-        axios({
-            method : 'post',
-            url :'https://us.faceplusplus.com/imagepp/v1/mergeface',
-            // headers: {'Content-type': 'application/json'},
-            params : params
-        })
-        .then(response1 => {
-            const data = 'data:image/jpeg;base64,' + response1.data.result;
-            // const data =  response1.data;
-            // res.send(data);
-            setResult(data);
-        })
-        .catch(err1 => console.log(err1))
+        // .then(response1 => {
+        //     const data = 'data:image/jpeg;base64,' + response1.data.result;
+        //     // const data =  response1.data;
+        //     // res.send(data);
+        //     setResult(data);
+        // })
+        // .catch(err1 => console.log(err1))
     }
     return (
             <div>
