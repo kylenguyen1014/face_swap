@@ -9,6 +9,25 @@ export default function Register(props) {
         setUserInput({...userInput, [e.target.name]: e.target.value});
     }
     
+    const registerAccount = () => {
+        const { name, email, password } = userInput;
+
+        fetch('http://localhost:8000/register',{
+            method : 'post',
+            headers: {'Content-type': 'application/json'},
+            body : JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            })
+        })
+        .then(response => response.json())
+        .then(user => props.setUser(user))
+        .catch(err => console.log(err))
+
+        props.signIn();
+        props.history.push('/');
+    }
     return (
         <div className='Register d-flex flex-column'>
             <Navbar />
@@ -27,7 +46,7 @@ export default function Register(props) {
                     <input type="password" className="form-control bg-transparent" id="password" name='password' placeholder="Password" value={userInput.password} onChange={handleUserInput}/>
                 </div>
                 <div className="d-flex justify-content-between">
-                    <button className="btn btn-primary">Register</button>
+                    <button className="btn btn-primary" onClick={registerAccount}>Register</button>
                 </div>
             </div>
         </div>
