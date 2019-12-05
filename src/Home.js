@@ -5,13 +5,13 @@ import Images from './component/Images';
 import Info from './component/Info';
 
 export default function Home(props) {
-    const { isSignIn, signOut, name, entries } = props;
+    const { isSignIn, signOut, user, updateEntries } = props;
     return (
         <div className='Home'>
             <Navbar isSignIn={isSignIn} signOut={signOut}/>
             <Logo />
-            {isSignIn && <Info name={name} entries={entries}/>}
-            {isSignIn && <Images />}
+            {isSignIn && <Info name={user.name} entries={user.entries}/>}
+            {isSignIn && <Images updateEntries={updateEntries} email={user.email}/>}
         </div>
     )
 }

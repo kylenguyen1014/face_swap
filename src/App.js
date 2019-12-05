@@ -26,12 +26,15 @@ function App() {
     setIsSignIn(false);
     setUser(initialState);
   }
+  const updateEntries = (newEntries) => {
+    setUser({...user, entries: newEntries});
+  }
   
   return (
     <Switch className="App">
       <Route exact path='/register' render={(routeProps) => <Register isSignIn={isSignIn} signIn={signIn} {...routeProps} setUser={setUser}/> }/>
       <Route exact path='/signin' render={(routeProps) => <SignIn isSignIn={isSignIn} signIn={signIn} {...routeProps} setUser={setUser}/> }/>
-      <Route exact path='/' render={(routeProps) => <Home isSignIn={isSignIn} signOut={signOut} name={user.name} entries={user.entries}/> }/>
+      <Route exact path='/' render={(routeProps) => <Home isSignIn={isSignIn} signOut={signOut} user={user} updateEntries={updateEntries}/> }/>
     </Switch>
   );
 }

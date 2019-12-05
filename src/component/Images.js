@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-function Images() {
+function Images(props) {
     const [template, setTemplate] = useState('');
     const [merging, setMerging] = useState('');
     const [result, setResult] = useState();
 
+    const { updateEntries, email } = props;
     const templateImageChange = (e) => {
         setTemplate(e.target.value);
     }
@@ -25,7 +26,20 @@ function Images() {
             })
         })
         .then(response => response.json())
-        .then(data => setResult('data:image/jpeg;base64,' + data.result))
+        .then(data => {
+            setResult('data:image/jpeg;base64,' + data.result);
+            fetch('http://localhost:8000/image',{
+                method : 'put',
+                headers: {'Content-type': 'application/json'},
+                body : JSON.stringify({
+                    email: email
+                })
+            })
+            .then(response => response.json())
+            .then(newEntries => updateEntries(newEntries))
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
 
         
         // const params = {
