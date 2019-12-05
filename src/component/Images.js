@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './Images.css';
 import axios from 'axios';
 
 function Images() {
@@ -28,6 +27,7 @@ function Images() {
         .then(response => response.json())
         .then(data => setResult('data:image/jpeg;base64,' + data.result))
 
+        
         // const params = {
         //     api_key: APIkey,
         //     api_secret: APISecret,

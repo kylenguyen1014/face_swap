@@ -4,18 +4,37 @@ import Navbar from './component/Navbar';
 import { Link } from "react-router-dom";
 
 export default function SignIn(props) {
-    const {isSignIn, signIn} = props;
+    const {isSignIn, signIn, setUser} = props;
     const [userInput, setUserInput] = useState({email: '', password: ''});
-
-    const handleSignIn = () => {
-        signIn();
-        props.history.push('/');
-    }
-
+    
     const handleUserInput = (e) => {
         const name = e.target.name;
         setUserInput({...userInput, [name]: e.target.value});
     }
+
+    const handleSignIn = () => {
+        const { email, password } = userInput;
+        fetch('http://localhost:8000/signin',{
+            method : 'post',
+            headers: {'Content-type': 'application/json'},
+            body : JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+        .then(response => response.json())
+        .then(user => {
+            if (user.id)
+            {
+                setUser(user);
+                signIn();
+                props.history.push('/');
+            }
+        })
+        .catch(err => console.log(err))
+    }
+
+    
     return (
         <div className='SignIn d-flex flex-column'>
             <Navbar isSignIn={isSignIn} />

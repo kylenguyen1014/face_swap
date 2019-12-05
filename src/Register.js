@@ -22,11 +22,16 @@ export default function Register(props) {
             })
         })
         .then(response => response.json())
-        .then(user => props.setUser(user))
+        .then(user => {
+            if (user.id)
+            {
+                props.setUser(user);
+                props.signIn();
+                props.history.push('/');
+            }
+        })
         .catch(err => console.log(err))
 
-        props.signIn();
-        props.history.push('/');
     }
     return (
         <div className='Register d-flex flex-column'>
