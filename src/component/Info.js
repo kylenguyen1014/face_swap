@@ -1,4 +1,5 @@
 import React from 'react';
+import './Info.css';
 
 function Info(props) {
     const { name, entries } = props;

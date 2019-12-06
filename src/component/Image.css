@@ -1,0 +1,51 @@
+.inside {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 576px) {
+    .card-image {
+        width: 10rem; 
+        height : 12.5rem;
+    }
+
+    .card-result {
+        width: 16rem; 
+        height : 20rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-image {
+        width: 12.5rem; 
+        height : 15rem;
+    }
+    
+    .card-result {
+        width: 20rem; 
+        height : 24rem;
+    }
+}
+@media (min-width: 992px) {
+    .card-image {
+        width: 15rem; 
+        height : 20rem;
+    }
+    
+    .card-result {
+        width: 24rem; 
+        height : 28rem;
+    }
+}
+@media (min-width: 1200px) {
+    .card-image {
+        width: 20rem; 
+        height : 25rem;
+    }
+    
+    .card-result {
+        width: 28rem; 
+        height : 32rem;
+    }
+}
