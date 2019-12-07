@@ -39,7 +39,7 @@ export default function SignIn(props) {
         <div className='SignIn d-flex flex-column'>
             <Navbar isSignIn={isSignIn} />
             {/* <SignInForm signIn={signIn}/> */}
-            <div className='w-25 m-auto card' style={{ height: 'auto'}}>
+            <div className='m-auto card form' style={{ height: 'auto'}}>
                 <div className='card-body'>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Email address</label>
@@ -50,7 +50,7 @@ export default function SignIn(props) {
                         <label htmlFor="exampleInputPassword1">Password</label>
                         <input name='password' type="password" className="form-control bg-transparent"  placeholder="Password" value={userInput.password} onChange={handleUserInput}/>
                     </div>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between align-items-center">
                         <button className="btn btn-primary" onClick={handleSignIn}>Sign In</button>
                         <Link to='/register'>Register?</Link>
                     </div>

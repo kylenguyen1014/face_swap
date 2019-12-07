@@ -54,7 +54,7 @@ function Images(props) {
                         <button className='btn btn-primary'>Merge</button>
                     </div> */}
                 </div>
-                <div className='mt-5 container-fluid d-flex  justify-content-center '>
+                <div className='mt-1 mt-sm-5 container-fluid d-flex  justify-content-center '>
                     <div className='row w-100 align-items-center d-flex align-self-sm-center align-self-stretch'>
                         <div className='col-6 col-md-3 d-flex justify-content-center'>
                             <div className="card card-image" >
