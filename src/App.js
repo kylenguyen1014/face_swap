@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Navbar from './component/Navbar';
-import Logo from './component/Logo';
-import Images from './component/Images';
 import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import Register from './Register';
