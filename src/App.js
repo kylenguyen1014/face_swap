@@ -3,10 +3,12 @@ import './App.css';
 import Navbar from './component/Navbar';
 import Logo from './component/Logo';
 import Images from './component/Images';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import Register from './Register';
 import SignIn from './SignIn';
+import Page from './Page';
+import { CSSTransition, TransitionGroup, } from 'react-transition-group';
 
 function App() {
   const initialState = {
@@ -31,11 +33,18 @@ function App() {
   }
   
   return (
-    <Switch className="App">
-      <Route exact path='/register' render={(routeProps) => <Register isSignIn={isSignIn} signIn={signIn} {...routeProps} setUser={setUser}/> }/>
-      <Route exact path='/signin' render={(routeProps) => <SignIn isSignIn={isSignIn} signIn={signIn} {...routeProps} setUser={setUser}/> }/>
-      <Route exact path='/' render={(routeProps) => <Home isSignIn={isSignIn} signOut={signOut} user={user} updateEntries={updateEntries}/> }/>
-    </Switch>
+    <Route render={({location}) => (
+        <TransitionGroup>
+          <CSSTransition key={location.key} timeout={300} classNames='page'>
+            <Switch className="App" location={location}>
+              <Route exact path='/register' render={(routeProps) =><Page> <Register isSignIn={isSignIn} signIn={signIn} {...routeProps} setUser={setUser}/> </Page>} />
+              <Route exact path='/signin' render={(routeProps) =><Page> <SignIn isSignIn={isSignIn} signIn={signIn} {...routeProps} setUser={setUser}/> </Page>} />
+              <Route exact path='/' render={(routeProps) =><Page> <Home isSignIn={isSignIn} signOut={signOut} user={user} updateEntries={updateEntries}/> </Page>} />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
+      )}
+    />
   );
 }
 
