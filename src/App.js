@@ -18,13 +18,13 @@ function App() {
     entries: 0,
     joined: ''
   };
-  const [isSignIn, setIsSignIn] = useState( localStorage.getItem('isSignIn') || false);
+  const [isSignIn, setIsSignIn] = useState( JSON.parse(localStorage.getItem('isSignIn')) || false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || initialState);
 
   useEffect(() => {
-    // Update user
+    // Update user and signin session
     localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('isSignIn', isSignIn);
+    localStorage.setItem('isSignIn', JSON.stringify(isSignIn));
   });
 
   const signIn = () => {

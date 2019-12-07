@@ -10,8 +10,12 @@ export default function Home(props) {
         <div className='Home'>
             <Navbar isSignIn={isSignIn} signOut={signOut}/>
             <Logo />
-            {isSignIn && <Info name={user.name} entries={user.entries}/>}
-            {isSignIn && <Images updateEntries={updateEntries} email={user.email}/>}
+            {isSignIn && (
+                <>
+                    <Info name={user.name} entries={user.entries}/>
+                    <Images updateEntries={updateEntries} email={user.email}/>
+                </>
+                )}
         </div>
     )
 }
