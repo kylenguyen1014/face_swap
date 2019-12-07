@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Navbar from './component/Navbar';
 import Logo from './component/Logo';
@@ -18,8 +18,14 @@ function App() {
     entries: 0,
     joined: ''
   };
-  const [isSignIn, setIsSignIn] = useState(false);
-  const [user, setUser] = useState(initialState);
+  const [isSignIn, setIsSignIn] = useState( localStorage.getItem('isSignIn') || false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || initialState);
+
+  useEffect(() => {
+    // Update user
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('isSignIn', isSignIn);
+  });
 
   const signIn = () => {
     setIsSignIn(true);
