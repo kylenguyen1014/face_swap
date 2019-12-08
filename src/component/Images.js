@@ -17,7 +17,7 @@ function Images(props) {
 
     const submitAPI = () => {
 
-        fetch('http://localhost:8000/imageurl',{
+        fetch('https://face-swap-api.herokuapp.com/imageurl',{
             method : 'post',
             headers: {'Content-type': 'application/json'},
             body : JSON.stringify({
@@ -28,7 +28,7 @@ function Images(props) {
         .then(response => response.json())
         .then(data => {
             setResult('data:image/jpeg;base64,' + data.result);
-            fetch('http://localhost:8000/image',{
+            fetch('https://face-swap-api.herokuapp.com/image',{
                 method : 'put',
                 headers: {'Content-type': 'application/json'},
                 body : JSON.stringify({

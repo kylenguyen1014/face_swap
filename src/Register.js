@@ -12,7 +12,7 @@ export default function Register(props) {
     const registerAccount = () => {
         const { name, email, password } = userInput;
 
-        fetch('http://localhost:8000/register',{
+        fetch('https://face-swap-api.herokuapp.com/register',{
             method : 'post',
             headers: {'Content-type': 'application/json'},
             body : JSON.stringify({
