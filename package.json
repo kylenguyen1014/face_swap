@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://api-us.faceplusplus.com/facepp/v3/detect",
+  
   "eslintConfig": {
     "extends": "react-app"
   },
