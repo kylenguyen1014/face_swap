@@ -6,32 +6,66 @@ import { Link } from "react-router-dom";
 export default function SignIn(props) {
     const {isSignIn, signIn, setUser} = props;
     const [userInput, setUserInput] = useState({email: '', password: ''});
-    
+    const [error, setError] = useState(false);
+    const [message, setMessage] = useState("");
+
     const handleUserInput = (e) => {
         const name = e.target.name;
         setUserInput({...userInput, [name]: e.target.value});
     }
 
-    const handleSignIn = () => {
-        const { email, password } = userInput;
-        fetch('https://face-swap-api.herokuapp.com/signin',{
-            method : 'post',
-            headers: {'Content-type': 'application/json'},
-            body : JSON.stringify({
-                email: email,
-                password: password
+    const handleAlerts = () => {
+        if(error && message){
+          return (
+            <div className="alert alert-danger ml-2 w-25 ">
+              {message}
+            </div>
+          )
+        } else if(!error && message){
+          return (
+            <div className="alert alert-success w-25">
+              {message}
+            </div>
+          )
+        } else{
+          return null;
+        }
+      }
+
+      const submitHandler = (event) =>{
+        event.preventDefault();
+        if( !userInput.email ){
+          setError(true);
+          setMessage('Email is required');
+        } else if( !userInput.password ){
+          setError(true);
+          setMessage('Password is required');
+        } 
+      }
+
+    const handleSignIn = (event) => {
+        submitHandler(event);
+        if (!error){
+            const { email, password } = userInput;
+            fetch('https://face-swap-api.herokuapp.com/signin',{
+                method : 'post',
+                headers: {'Content-type': 'application/json'},
+                body : JSON.stringify({
+                    email: email,
+                    password: password
+                })
             })
-        })
-        .then(response => response.json())
-        .then(user => {
-            if (user.id)
-            {
-                setUser(user);
-                signIn();
-                props.history.push('/');
-            }
-        })
-        .catch(err => console.log(err))
+            .then(response => response.json())
+            .then(user => {
+                if (user.id)
+                {
+                    setUser(user);
+                    signIn();
+                    props.history.push('/');
+                }
+            })
+            .catch(err => console.log(err))
+        }
     }
 
     
@@ -54,6 +88,7 @@ export default function SignIn(props) {
                     </div>
                 </div>
             </div>
+            {handleAlerts()}
         </div>
     )
 }

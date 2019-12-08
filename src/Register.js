@@ -4,33 +4,70 @@ import './Register.css';
 
 export default function Register(props) {
     const [userInput, setUserInput] = useState({name: '', email: '', password: ''});
+    const [error, setError] = useState(false);
+    const [message, setMessage] = useState("");
 
     const handleUserInput = (e) => {
         setUserInput({...userInput, [e.target.name]: e.target.value});
     }
-    
-    const registerAccount = () => {
-        const { name, email, password } = userInput;
 
-        fetch('https://face-swap-api.herokuapp.com/register',{
-            method : 'post',
-            headers: {'Content-type': 'application/json'},
-            body : JSON.stringify({
-                name: name,
-                email: email,
-                password: password
+    const handleAlerts = () => {
+        if(error && message){
+          return (
+            <div className="alert alert-danger ml-2 w-25 ">
+              {message}
+            </div>
+          )
+        } else if(!error && message){
+          return (
+            <div className="alert alert-success w-25">
+              {message}
+            </div>
+          )
+        } else{
+          return null;
+        }
+      }
+
+      const submitHandler = (event) =>{
+        event.preventDefault();
+        if( !userInput.name ){
+          setError(true);
+          setMessage('Name is required');
+        } else if( !userInput.email ){
+          setError(true);
+          setMessage('Email is required');
+        } else if( !userInput.password ){
+          setError(true);
+          setMessage('Password is required');
+        } 
+      }
+    const registerAccount = (event) => {
+        submitHandler(event);
+        if (!error){
+            const { name, email, password } = userInput;
+
+            fetch('https://face-swap-api.herokuapp.com/register',{
+                method : 'post',
+                headers: {'Content-type': 'application/json'},
+                body : JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
             })
-        })
-        .then(response => response.json())
-        .then(user => {
-            if (user.id)
-            {
-                props.setUser(user);
-                props.signIn();
-                props.history.push('/');
-            }
-        })
-        .catch(err => console.log(err))
+            .then(response => response.json())
+            .then(user => {
+                if (user.id)
+                {
+                    props.setUser(user);
+                    props.signIn();
+                    props.history.push('/');
+                }
+            })
+            .catch(err => console.log(err))
+        }
+        
 
     }
     return (
@@ -55,6 +92,7 @@ export default function Register(props) {
                     </div>
                 </div>
             </div>
+            {handleAlerts()}
         </div>
     )
 }
